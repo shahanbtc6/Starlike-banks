@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- اضافه کردن فونت آیکون (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- کتابخانه چارت -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- سایدبار (ناوبری) -->
+        <nav class="sidebar">
+            <div class="logo"><i class="fas fa-cube"></i></div>
+            <div class="search-bar"><i class="fas fa-search"></i> Search here</div>
+            <ul class="nav-menu">
+                <li class="active"><i class="fas fa-home"></i> Dashboard</li>
+                <li><i class="fas fa-chart-line"></i> Market</li>
+                <li><i class="fas fa-wallet"></i> Crypto wallet</li>
+                <li><i class="fas fa-star"></i> Watchlist</li>
+                <li><i class="fas fa-users"></i> Community</li>
+            </ul>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/150?img=33" alt="User">
+                <div>
+                    <span>Allen thomson</span>
+                    <small>Pro</small>
+                </div>
+            </div>
+        </nav>
+
+        <!-- محتوای اصلی -->
+        <main class="main-content">
+            <!-- هدر -->
+            <header>
+                <div class="header-title">Dashboard</div>
+                <div class="header-actions">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">10</span>
+                </div>
+            </header>
+
+            <!-- گرید اصلی -->
+            <div class="grid-layout">
+                
+                <!-- بخش ۱: کارت ویزیت -->
+                <div class="card card-bank">
+                    <div class="card-header">
+                        <span>My card</span>
+                        <button class="btn-sm">+ Add card</button>
+                    </div>
+                    <div class="visa-card">
+                        <div class="card-top">
+                            <span class="logo-text">VISA</span>
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="card-number">0239 8347 9493 3424</div>
+                        <div class="card-details">
+                            <div>Card holder<br><b>Allen thomson</b></div>
+                            <div>Expiry<br><b>08/28</b></div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <div class="balance">$ 25.596 USD</div>
+                        <div class="action-buttons">
+                            <button class="btn-primary">Transfer</button>
+                            <button class="btn-secondary">Withdraw</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بخش ۲: چارت اصلی -->
+                <div class="card card-chart">
+                    <div class="chart-header">
+                        <div>
+                            <h2>$ 254.596,04</h2>
+                            <small>Ethereum - ETH <span class="green">+12,93%</span></small>
+                        </div>
+                        <div class="chart-controls">
+                            <button class="active">1D</button>
+                            <button>7D</button>
+                            <button>1M</button>
+                        </div>
+                    </div>
+                    <!-- کانتینر چارت -->
+                    <div class="chart-wrapper">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- بخش ۳: دارایی‌ها -->
+                <div class="card card-assets">
+                    <div class="card-title">Your assets</div>
+                    <div class="asset-value">
+                        $ 165.563 <small class="green">(+48.35%)</small>
+                    </div>
+                    <!-- چارت کوچک -->
+                    <div class="small-chart-wrapper">
+                        <canvas id="assetsChart"></canvas>
+                    </div>
+                    <!-- لیست ارزها -->
+                    <div class="asset-list">
+                        <div class="item"><i class="fab fa-bitcoin" style="color:#f7931a;"></i> Bitcoin <span>0.000014 BTC</span></div>
+                        <div class="item"><i class="fab fa-ethereum" style="color:#627eea;"></i> Ethereum <span>0.0491 ETH</span></div>
+                        <div class="item"><i class="fas fa-dollar-sign" style="color:#26a17b;"></i> Tether <span>0.121 USDT</span></div>
+                    </div>
+                </div>
+
+                <!-- بخش ۴: تبادل ارز -->
+                <div class="card card-exchange">
+                    <div class="card-title">Exchange</div>
+                    <div class="exchange-box">
+                        <div class="exchange-row">
+                            <span>You will send</span>
+                            <div class="input-group">
+                                <input type="text" value="0.0002568">
+                                <button class="coin-btn"><i class="fab fa-bitcoin"></i> Bitcoin</button>
+                            </div>
+                        </div>
+                        <div class="exchange-row">
+                            <span>You will received</span>
+                            <div class="input-group">
+                                <input type="text" value="0.06985">
+                                <button class="coin-btn"><i class="fab fa-ethereum"></i> Ethereum</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-primary full-width">Exchange</button>
+                </div>
+
+                <!-- بخش ۵: قیمت‌ها -->
+                <div class="card card-prices">
+                    <div class="card-title">Cryptocurrencies Prices</div>
+                    <div class="price-item">
+                        <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> Binance</span>
+                        <span class="green">+1.32%</span>
+                        <span>$36,747.96</span>
+                    </div>
+                    <div class="price-item">
+                        <span><i class="fas fa-times-circle" style="color:#000;"></i> XRP</span>
+                        <span class="red">-1.82%</span>
+                        <span>$36,747.96</span>
+                    </div>
+                    <div class="price-item">
+                        <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> Bitcoin</span>
+                        <span class="green">+12.93%</span>
+                        <span>$36,747.96</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
